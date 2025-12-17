@@ -33,10 +33,10 @@ class App(tk.Tk):
         scrt_pwd=toplevel_start.scrt_pwd
 
         # === 布局根窗口的控件 ===
-        frame_accounts=FrameAccounts(self,'./db/current.json',scrt_pwd,padding=5)
-        frame_find=FrameFind(self,frame_accounts.treeview,padding=5)
-        frame_info=FrameInfo(self,frame_accounts,'./db/current.json','./img/copy.png',scrt_pwd,padding=5)
-        frame_accounts.grid(column=0,row=1,sticky='ns')
+        self.frame_accounts=FrameAccounts(self,'./db/current.json',scrt_pwd,padding=5)
+        frame_find=FrameFind(self,self.frame_accounts.treeview,padding=5)
+        frame_info=FrameInfo(self,self.frame_accounts,'./db/current.json','./img/copy.png',scrt_pwd,padding=5)
+        self.frame_accounts.grid(column=0,row=1,sticky='ns')
         frame_info.grid(column=1,row=1,sticky='nsew')
 
         # === 布局根窗口的菜单 ===

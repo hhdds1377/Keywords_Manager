@@ -21,7 +21,7 @@ class TreeviewAccounts(ttk.Treeview):
         decrypt_obj.decrypt_file()
         db_list=decrypt_obj.plaintext
 
-        db_list.sort(key=lambda i:i['layer'])
+        db_list.sort(key=lambda i:int(i['layer']))
         accounts_iid_dict={}
         for item_index,item_dict in enumerate(db_list):
             if item_dict['layer']==0:

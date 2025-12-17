@@ -8,7 +8,7 @@ from decrypt import Decrypt
 from encrypt import Encrypt
 from tkinter import messagebox
 import time
-from frame_accounts import FrameAccounts
+from .frame_accounts import FrameAccounts
 
 class ValidateSpinbox(ttk.Spinbox):
     def __init__(self,parent,from_,to,*args,**kwargs):
@@ -217,7 +217,7 @@ class ToplevelAdd(tk.Toplevel):
                     plaintext.append(child_dict)
                     encrypt_obj=Encrypt(scrt_pwd,data=plaintext,to_db_path=db_path)
                     encrypt_obj.encrypt_data()
-                
+
                 self.destroy()
         btn_save=ttk.Button(frame_db_input,text='保存',command=save)
         btn_save.grid(column=5,row=1)
@@ -227,6 +227,8 @@ class ToplevelAdd(tk.Toplevel):
 
 if __name__=='__main__':
     root=tk.Tk()
-    root.withdraw()
     toplevel_add=ToplevelAdd(root,'123','../../db/current.json')
     root.mainloop()
+    decrypt_obj=Decrypt('123',from_db_path='../../db/current.json')
+    decrypt_obj.decrypt_file()
+    print(decrypt_obj.plaintext)
